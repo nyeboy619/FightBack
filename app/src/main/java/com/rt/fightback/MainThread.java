@@ -1,4 +1,10 @@
-public class MainThread extends Thread{
+package com.rt.fightback;
+
+import android.graphics.*;
+import android.view.*;
+
+public class MainThread extends Thread
+{
 
 	public static final int MAX_FPS = 30;
 	private double averageFps;
@@ -36,11 +42,13 @@ public class MainThread extends Thread{
 					this.gamePanel.update();
 					this.gamePanel.draw(canvas);
 				}
-			}	catch (Exception e)	{	e.printStackTrace()}
+			}	catch (Exception e)	{	e.printStackTrace();}
 				finally {
 					if(canvas != null){
+						
 						surfaceHolder.unlockCanvasAndPost(canvas);
-					}	catch(Exception e) {e.printStackTrace();}
+					}	
+					}catch (Exception e) {e.printStackTrace();}
 				}
 
 			timeMillis = (System.nanoTime() - startTime)/1000000;

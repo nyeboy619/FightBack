@@ -1,4 +1,12 @@
-public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
+
+package com.rt.fightback;
+
+import android.content.*;
+import android.graphics.*;
+import android.view.*;
+
+public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
+{
 	private MainThread thread;
 
 	public GamePanel(Context context){
@@ -12,7 +20,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 	}
 
 	@Override
-	public surfaceChange(SurfaceHolder holder, int format, int width, int height){
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height){
 
 	}
 
@@ -21,19 +29,19 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 		thread = new MainThread(getHolder(),this);
 
 		thread.setRunning(true);
-		thread.start(;)
+		thread.start();
 	}
 
 	@Override
-	public void SurfaceDestroyed(SurfaceHolder holder){
+	public void surfaceDestroyed(SurfaceHolder holder){
 
 		boolean retry = true;
 		while(true){
 			try{
 				thread.setRunning(false);
 				thread.join();
-			}	catch (Exception e) {	e.printStackTrace()}
-			retry = false
+			}	catch (Exception e) {	e.printStackTrace();}
+			retry = false;
 		}
 	}
 
