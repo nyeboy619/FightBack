@@ -9,7 +9,9 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        getWindow().setFlags(WindowManager.LayoutParams.Flag_FULLSCREEN,WindowManager.LayoutParams.Flag_FULLSCREEN)
+        this.requestWindowFeature(Window.FEATURES_NO_TITLE);
+        setContentView(new GamePanel(this);
 
     }
 }
