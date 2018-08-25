@@ -53,9 +53,7 @@ public class MainThread extends Thread
 					}	
 					catch (Exception e) {e.printStackTrace();}
 
-						surfaceHolder.unlockCanvasAndPost(canvas);
-					
-					}catch (Exception e) {e.printStackTrace();}
+						
 
 				}
 

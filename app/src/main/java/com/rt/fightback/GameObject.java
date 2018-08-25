@@ -1,6 +1,9 @@
-package com.rt.fightback
+package com.rt.fightback;
 
-public interface GameObject{
+import android.graphics.*;
+
+public interface GameObject
+{
 	
 	public void draw(Canvas canvas);
 	public void update();
