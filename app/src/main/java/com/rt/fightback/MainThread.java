@@ -20,12 +20,12 @@ public class MainThread extends Thread
 	}
 
 	public void setRunning(boolean running){
-		ths.running = running;
+		this.running = running;
 	}
 
 	@Override
 	public void run(){
-		long startTime;
+		long startTime= 0;
 		long timeMillis = 1000/MAX_FPS;
 		long waitTime;
 		int frameCount = 0;
@@ -48,9 +48,15 @@ public class MainThread extends Thread
 						try{
 
 
+
 						surfaceHolder.unlockCanvasAndPost(canvas);
 					}	
 					catch (Exception e) {e.printStackTrace();}
+
+						surfaceHolder.unlockCanvasAndPost(canvas);
+					
+					}catch (Exception e) {e.printStackTrace();}
+
 				}
 
 			timeMillis = (System.nanoTime() - startTime)/1000000;
@@ -69,5 +75,5 @@ public class MainThread extends Thread
 				System.out.println(averageFps);
 			}
 		}	
-	}
+	}}
 }
