@@ -45,10 +45,12 @@ public class MainThread extends Thread
 			}	catch (Exception e)	{	e.printStackTrace();}
 				finally {
 					if(canvas != null){
-						
+						try{
+
+
 						surfaceHolder.unlockCanvasAndPost(canvas);
 					}	
-					}catch (Exception e) {e.printStackTrace();}
+					catch (Exception e) {e.printStackTrace();}
 				}
 
 			timeMillis = (System.nanoTime() - startTime)/1000000;
