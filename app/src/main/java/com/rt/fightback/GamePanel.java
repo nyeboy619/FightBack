@@ -9,8 +9,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 {
 	private MainThread thread;
 
-	private RectPlayer player;
+	
 	private Point playerPoint;
+
+	private ArrayList<RectPlayer> Player;
+	private RectPlayer player;
 
 
 
@@ -59,6 +62,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 			case MotionEvent.ACTION_DOWN:
 			case MotionEvent.ACTION_MOVE:
 				playerPoint.set((int)event.getX(),(int)event.getY());
+				Player.add(player);
 
 		}
 
