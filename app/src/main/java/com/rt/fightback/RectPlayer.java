@@ -4,20 +4,17 @@ import android.graphics.*;
 
 public class RectPlayer implements GameObject
 {
+	Rect2 rec2;
 	
-	private Rect rectangle;
-	private int color;
 
-	public RectPlayer(Rect rectangle, int color){
-		this.rectangle = rectangle;
-		this.color = color;
+
+	public RectPlayer(){
+		rec2= new Rect2();
 	}
 
 	@Override
 	public void draw(Canvas canvas){
-		Paint paint = new Paint();
-		paint.setColor(color);
-		canvas.drawRect(rectangle,paint);
+		rec2.draw(canvas);
 
 	}
 
@@ -28,8 +25,8 @@ public class RectPlayer implements GameObject
 	}
 
 	
-	public void update(Point point){
-		rectangle.set(point.x-rectangle.width()/2,point.y-rectangle.height()/2,point.x+rectangle.width()/2,point.y+rectangle.height()/2);
+	public void update(Point p){
+		rec2.update(p.x,p.y);
 	}
 
 }

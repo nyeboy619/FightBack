@@ -4,6 +4,7 @@ package com.rt.fightback;
 import android.content.*;
 import android.graphics.*;
 import android.view.*;
+import java.util.*;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 {
@@ -12,7 +13,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 	
 	private Point playerPoint;
 
-	private ArrayList<RectPlayer> Player;
+
 	private RectPlayer player;
 
 
@@ -24,7 +25,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 
 		thread = new MainThread(getHolder(),this);
 
-		player = new RectPlayer(new Rect(100,100,200,200),Color.WHITE);
+		player = new RectPlayer();
 		playerPoint = new Point(150,150);
 
 		setFocusable(true);
@@ -62,7 +63,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 			case MotionEvent.ACTION_DOWN:
 			case MotionEvent.ACTION_MOVE:
 				playerPoint.set((int)event.getX(),(int)event.getY());
-				Player.add(player);
+				
 
 		}
 
@@ -77,7 +78,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 	public void draw(Canvas canvas){
 		super.draw(canvas);
 
-		canvas.drawColor(Color.RED);
+		canvas.drawColor(Color.YELLOW);
+		
 
 		player.draw(canvas);
 	}

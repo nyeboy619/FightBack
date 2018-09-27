@@ -42,7 +42,7 @@ public class MainThread extends Thread
 					this.gamePanel.update();
 					this.gamePanel.draw(canvas);
 				}
-			}	catch (Exception e)	{	e.printStackTrace();}
+			}	catch (Exception e)	{e.printStackTrace();}
 				finally {
 					if(canvas != null){
 						try{
