@@ -16,11 +16,14 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 
 	private RectPlayer player;
 
+	private AudioPool audioPool;
 
 
+	Context context;
 	public GamePanel(Context context){
 		super(context);
 
+		this.context = context;
 		getHolder().addCallback(this);
 
 		thread = new MainThread(getHolder(),this);
@@ -29,6 +32,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 		playerPoint = new Point(150,150);
 
 		setFocusable(true);
+		
+		audioPool = new AudioPool(context);
 	}
 
 	@Override
@@ -64,6 +69,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 			case MotionEvent.ACTION_MOVE:
 				playerPoint.set((int)event.getX(),(int)event.getY());
 				
+			case MotionEvent.ACTION_UP:
+				audioPool.play();
 
 		}
 

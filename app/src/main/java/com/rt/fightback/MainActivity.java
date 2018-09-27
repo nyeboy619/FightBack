@@ -12,7 +12,7 @@ public class MainActivity extends Activity
 		
 		
 		new AudioPool(this);
-		new Rect2(this);
+		
 		
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);

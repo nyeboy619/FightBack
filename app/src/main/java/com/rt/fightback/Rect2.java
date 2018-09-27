@@ -6,16 +6,14 @@ public class Rect2 implements GameObject
 {
 
 	Context c;
-	private AudioPool audioPool;
+	
 	private Rect rectangle;
 
-	public Rect2(Context c){
-		this.c=c;
-	}
+	
 
 	public Rect2(){
 		rectangle = new Rect(100,100,200,200);
-		audioPool = new AudioPool(c);
+	
 	}
 
 	@Override
@@ -42,7 +40,7 @@ public class Rect2 implements GameObject
 		catch (InterruptedException e)
 		{}
 		
-		audioPool.play();
+		
 	}
 	@Override
 	public void update(){

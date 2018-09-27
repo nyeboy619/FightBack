@@ -13,10 +13,6 @@ public class AudioPool
 	int x;
 	AssetFileDescriptor descriptor;
 	
-	public AudioPool(){
-		
-		
-	}
 	
 	public AudioPool(Context c){
 		this.c=c;
