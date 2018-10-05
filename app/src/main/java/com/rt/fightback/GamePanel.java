@@ -17,20 +17,28 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 	private RectPlayer player;
 
 	private AudioPool audioPool;
+	
+	private Animated a;
+	private boolean gameStarted = false;
+	private boolean spawnChar= false;
 
 
 	Context context;
 	public GamePanel(Context context){
 		super(context);
 
+		
 		this.context = context;
+		
+		a= new Animated(context);
 		getHolder().addCallback(this);
 
 		thread = new MainThread(getHolder(),this);
 
-		player = new RectPlayer();
-		playerPoint = new Point(150,150);
+		player = new RectPlayer(context);
+		
 
+		
 		setFocusable(true);
 		
 		audioPool = new AudioPool(context);
@@ -43,6 +51,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder){
+			
 		thread = new MainThread(getHolder(),this);
 
 		thread.setRunning(true);
@@ -66,11 +75,17 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 	public boolean onTouchEvent(MotionEvent event){
 		switch(event.getAction()){
 			case MotionEvent.ACTION_DOWN:
+					spawnChar=true;
+					
+					break;
 			case MotionEvent.ACTION_MOVE:
-				playerPoint.set((int)event.getX(),(int)event.getY());
 				
+				
+				break;
 			case MotionEvent.ACTION_UP:
-				audioPool.play();
+				gameStarted=true;
+					
+				break;
 
 		}
 
@@ -78,16 +93,30 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 	}
 
 	public void update(){
-		player.update(playerPoint);
+		player.update();
+		a.update();
+		
 	}
 
 	@Override
 	public void draw(Canvas canvas){
 		super.draw(canvas);
 
-		canvas.drawColor(Color.YELLOW);
 		
+		canvas.drawColor(Color.YELLOW);
+	
+		if(spawnChar){
+				player.draw(canvas);
+		
+		}
+		
+		if(gameStarted){
+		a.draw(canvas);
+	
 
-		player.draw(canvas);
+		
+		
+		
+		}
 	}
 }

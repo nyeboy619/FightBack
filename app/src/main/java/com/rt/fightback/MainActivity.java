@@ -12,9 +12,11 @@ public class MainActivity extends Activity
 		
 		
 		new AudioPool(this);
-		
-		
+		new Rect2(this);
+		new Animated(this);
         super.onCreate(savedInstanceState);
+				
+		   
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(new GamePanel(this));
@@ -24,4 +26,16 @@ public class MainActivity extends Activity
 	
 
     }
+
+		@Override
+		protected void onPause()
+		{
+				// TODO: Implement this method
+				super.onPause();
+			
+		
+				
+		}
+		
+		
 }
