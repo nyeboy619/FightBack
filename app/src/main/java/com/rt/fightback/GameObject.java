@@ -7,4 +7,6 @@ public interface GameObject
 	
 	public void draw(Canvas canvas);
 	public void update();
+	public boolean gameState();
+	public void setGameStateToTrue();
 }

@@ -14,6 +14,7 @@ public class MainActivity extends Activity
 		new AudioPool(this);
 		new Rect2(this);
 		new Animated(this);
+		
         super.onCreate(savedInstanceState);
 				
 		   

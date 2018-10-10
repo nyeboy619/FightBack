@@ -9,6 +9,23 @@ import android.view.*;
 public class Animated implements GameObject
 {
 
+		@Override
+		public void setGameStateToTrue()
+		{
+				// TODO: Implement this method
+		}
+
+
+		
+
+		@Override
+		public boolean gameState()
+		{
+				// TODO: Implement this method
+				return false;
+		}
+
+
 
 
 		int frame=0;

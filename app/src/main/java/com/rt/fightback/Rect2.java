@@ -8,7 +8,23 @@ import android.view.*;
 public class Rect2 implements GameObject
 {
 
+		@Override
+		public void setGameStateToTrue()
+		{
+				// TODO: Implement this method
+		}
+
+
+		@Override
+		public boolean gameState()
+		{
+				// TODO: Implement this method
+				return false;
+		}
+
+
 	Context c;
+	
 	Bitmap bmp;
 	
 
@@ -17,15 +33,19 @@ public class Rect2 implements GameObject
 	float x=100,y=1;
 	int sh,sw;
 	Point p;
-
+	boolean run;
+	
+	
+	
 
 	public Rect2(Context c){
 			this.c= c;
 			am = c.getAssets();
 			
 			
-			sh=c.getSystemService(WindowManager.class).getDefaultDisplay().getHeight();
-			sw= c.getSystemService(WindowManager.class).getDefaultDisplay().getWidth();
+			
+			
+			
 			
 			try
 			{
@@ -48,9 +68,10 @@ public class Rect2 implements GameObject
 	public void draw(Canvas canvas)
 	{
 		
-		
+	
 		canvas.drawBitmap(bmp,x,y,null);
 	
+		
 		// TODO: Implement this method
 	}
 
@@ -71,6 +92,13 @@ public class Rect2 implements GameObject
 		if(y+bmp.getHeight()>=sh){
 				y= sh-bmp.getHeight();
 		}
+	}
+	
+	public void gameStarted(boolean yes){
+			this.run=yes;
+			
+			
+			
 	}
 	
 	
