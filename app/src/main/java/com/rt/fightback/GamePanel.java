@@ -6,6 +6,7 @@ import android.graphics.*;
 import android.util.*;
 import android.view.*;
 import android.widget.*;
+import android.os.*;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 {
@@ -42,7 +43,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 	
 		setFocusable(true);
 		
-		gameState = setScreen.getGameState();
+	
 		
 		paint = new Paint();
 		paint.setColor(Color.RED);
@@ -89,19 +90,24 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 	public boolean onTouchEvent(MotionEvent event){
 		switch(event.getAction()){
 			case MotionEvent.ACTION_DOWN:
+					
+					Vibrator v = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
+					v.vibrate(500);
+					
+					
 				switch(gameState){
 						case 1:
-								String a =String.valueOf( setScreen.gameState+1);
+								setScreen.gameState++;
 								
-								Log.i("a",  a );
+								
 								break;
 						case 2:
-								setScreen.gameState+=1;
-								Toast.makeText(this.context,setScreen.gameState,Toast.LENGTH_LONG).show();
+								setScreen.gameState++;
+								
 								break;
 						case 3:
+									setScreen.gameState-=2;
 									
-									Toast.makeText(this.context,setScreen.gameState,Toast.LENGTH_LONG).show();
 								break;
 				}
 					
@@ -121,8 +127,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 	}
 
 	public void update(){
-	setScreen.update();
-			
+	   setScreen.update();
+			gameState = setScreen.getGameState();
 	}
 	
 

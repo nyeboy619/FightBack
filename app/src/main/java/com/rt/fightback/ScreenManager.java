@@ -71,6 +71,7 @@ public class ScreenManager
 								option.setGameStateToTrue();
 								menu.gameState = false;
 								game.gameState = false;
+								break;
 				}
 		}
 		

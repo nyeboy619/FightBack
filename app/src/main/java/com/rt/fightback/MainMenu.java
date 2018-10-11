@@ -18,7 +18,8 @@ public class MainMenu implements GameObject
 		@Override
 		public void draw(Canvas canvas)
 		{
-				canvas.drawColor(Color.BLUE);
+				
+				canvas.drawColor(Color.parseColor("ffbbpp"));
 				// TODO: Implement this method
 		}
 
