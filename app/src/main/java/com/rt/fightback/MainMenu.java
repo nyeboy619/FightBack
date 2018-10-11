@@ -19,7 +19,7 @@ public class MainMenu implements GameObject
 		public void draw(Canvas canvas)
 		{
 				
-				canvas.drawColor(Color.parseColor("ffbbpp"));
+				canvas.drawColor(Color.rgb(255,187,0));
 				// TODO: Implement this method
 		}
 
