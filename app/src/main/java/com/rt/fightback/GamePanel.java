@@ -22,11 +22,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 
 	Context context;
 	ScreenManager setScreen;
+	MainMenu main;
 	
 		int gameState;
 
 		private Paint paint;
 	
+		Point touchPoint;
 	
 	public GamePanel(Context context){
 		super(context);
@@ -37,6 +39,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 		sh = context.getSystemService(WindowManager.class).getDefaultDisplay().getHeight();
 		
 		setScreen = new ScreenManager(context);
+		main = new MainMenu(context);
 		getHolder().addCallback(this);
 
 		thread = new MainThread(getHolder(),this);
@@ -47,6 +50,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 		
 		paint = new Paint();
 		paint.setColor(Color.RED);
+		
+		
+		touchPoint = new Point();
 		
 		this.context.getApplicationContext();
 	
@@ -88,6 +94,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event){
+			touchPoint.set((int)event.getX(),(int)event.getY());
 		switch(event.getAction()){
 			case MotionEvent.ACTION_DOWN:
 					
@@ -97,16 +104,20 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 					
 				switch(gameState){
 						case 1:
-								setScreen.gameState++;
+								if(main.playButton.contains(touchPoint.x,touchPoint.y)){
+										setScreen.gameState=2;
+								}else if(main.optionButton.contains(touchPoint.x,touchPoint.y)){
+										setScreen.gameState=3;
+								}
 								
 								
 								break;
 						case 2:
-								setScreen.gameState++;
+								
 								
 								break;
 						case 3:
-									setScreen.gameState-=2;
+									
 									
 								break;
 				}
@@ -115,15 +126,65 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 				break;
 			case MotionEvent.ACTION_MOVE:
 				
+
+						switch(gameState){
+								case 1:
+
+
+
+										break;
+								case 2:
+
+
+										break;
+								case 3:
+
+
+										break;
+						}
+					
+					
+					
 				
 				break;
 			case MotionEvent.ACTION_UP:
 		
+
+						switch(gameState){
+								case 1:
+
+
+
+										break;
+								case 2:
+
+
+										break;
+								case 3:
+
+
+										break;
+						}
+					
+					
 				break;
 
 		}
 
 		return true;
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event)
+	{
+			// TODO: Implement this method
+
+			if(keyCode == KeyEvent.KEYCODE_BACK){
+					
+			}
+			return super.onKeyDown(keyCode, event);
+	
+	
 	}
 
 	public void update(){
@@ -145,4 +206,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 		setScreen.draw(canvas);
 	
 	}
+	
+	
+	
+	
+	 
 } 

@@ -60,17 +60,21 @@ public class ScreenManager
 								menu.setGameStateToTrue();
 								game.gameState = false;
 								option.gameState = false;
+								
 								break;
+								
 						case 2:
 								game.setGameStateToTrue();
 								menu.gameState = false;
 								option.gameState = false;
 								
 								break;
+								
 						case 3:
 								option.setGameStateToTrue();
 								menu.gameState = false;
 								game.gameState = false;
+								
 								break;
 				}
 		}
