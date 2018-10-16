@@ -15,12 +15,14 @@ public class ScreenManager
 		{
 				// TODO: Implement this method
 				checkGameState();
+				game.gameStart = gameStart;
 		}
 		
 		MainMenu menu;
 		GameView game;
 		
 		int gameState;
+		boolean gameStart;
 		
 		
 		
@@ -77,6 +79,10 @@ public class ScreenManager
 								
 								break;
 				}
+		}
+		
+		public void setGam3eStart(boolean g){
+				gameStart= g;
 		}
 		
 		

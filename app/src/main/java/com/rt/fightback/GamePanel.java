@@ -20,14 +20,17 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 	int sw,sh;
 
 
+	KeyEvent keyEvent;
 	Context context;
 	ScreenManager setScreen;
 	MainMenu main;
-	
+	OptionMenu option;
+	GameView game;
 		int gameState;
 
 		private Paint paint;
 	
+		Toast t;
 		Point touchPoint;
 	
 	public GamePanel(Context context){
@@ -40,6 +43,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 		
 		setScreen = new ScreenManager(context);
 		main = new MainMenu(context);
+		option = new OptionMenu(context);
+		game = new GameView(context);
 		getHolder().addCallback(this);
 
 		thread = new MainThread(getHolder(),this);
@@ -56,6 +61,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 		
 		this.context.getApplicationContext();
 	
+		keyEvent = new KeyEvent(KeyEvent.FLAG_FROM_SYSTEM,4);
 		Toast.makeText(context,"GameStart",Toast.LENGTH_LONG).show();
 		
 	
@@ -98,30 +104,27 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 		switch(event.getAction()){
 			case MotionEvent.ACTION_DOWN:
 					
-					Vibrator v = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
-					v.vibrate(500);
 					
 					
-				switch(gameState){
-						case 1:
-								if(main.playButton.contains(touchPoint.x,touchPoint.y)){
-										setScreen.gameState=2;
-								}else if(main.optionButton.contains(touchPoint.x,touchPoint.y)){
-										setScreen.gameState=3;
-								}
-								
-								
-								break;
-						case 2:
-								
-								
-								break;
-						case 3:
-									
-									
-								break;
-				}
+						switch(gameState){
+								case 1:
+
+
+
+										break;
+								case 2:
+
+
+										break;
+								case 3:
+
+
+										break;
+						}
+						
 					
+							
+			
 					
 				break;
 			case MotionEvent.ACTION_MOVE:
@@ -150,22 +153,36 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 			case MotionEvent.ACTION_UP:
 		
 
+					
+						Vibrator v = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
+						v.vibrate(500);
+
+
 						switch(gameState){
 								case 1:
-
+										if(main.playButton.contains(touchPoint.x,touchPoint.y)){
+												setScreen.gameState=2;
+										}else if(main.optionButton.contains(touchPoint.x,touchPoint.y)){
+												setScreen.gameState=3;
+										}
 
 
 										break;
 								case 2:
-
-
+										if(game.startButton.contains(touchPoint.x,touchPoint.y)){
+												setScreen.gameStart=true;
+												Toast.makeText(context,""+game.gameStart,Toast.LENGTH_LONG).show();
+										}
 										break;
 								case 3:
+										if(option.backButton.contains(touchPoint.x,touchPoint.y)){
+												setScreen.gameState=1;
+										}
 
 
 										break;
 						}
-					
+						
 					
 				break;
 
@@ -174,18 +191,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 		return true;
 	}
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event)
-	{
-			// TODO: Implement this method
-
-			if(keyCode == KeyEvent.KEYCODE_BACK){
-					
-			}
-			return super.onKeyDown(keyCode, event);
 	
-	
-	}
 
 	public void update(){
 	   setScreen.update();
@@ -205,6 +211,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback
 		
 		setScreen.draw(canvas);
 	
+	}
+	
+	public int getGameState(){
+			return gameState;
+	}
+	public void setState(int i){
+			setScreen.gameState= i;
 	}
 	
 	
